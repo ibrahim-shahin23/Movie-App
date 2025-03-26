@@ -1,14 +1,15 @@
-import './App.css'
-import Eid from'./assets/image.png'
+import React from 'react'
+import { BrowserRouter , Routes ,Route } from 'react-router-dom'
+import MovieDetails from './pages/MovieDetails'
 
 function App() {
 
   return (
-    <>
-    <div className='text-center'>
-      <img className='col-10' src={Eid} alt="" />
-    </div>
-    </>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/movie/:id" element={<MovieDetails />} />
+        </Routes>
+      </BrowserRouter>
   )
 }
 
