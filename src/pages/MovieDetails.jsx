@@ -4,8 +4,8 @@ import axios from "axios";
 import Recommendations from "../components/Recommendations";
 import "../css/MovieDetails.css";
 
-const API_KEY = "05164e0087a514986ed5b30bc77851d6";
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function MovieDetails() {
   const { id } = useParams();
