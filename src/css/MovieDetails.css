@@ -1,0 +1,210 @@
+body {
+    overflow-x: hidden;
+}
+
+/*-----start movie details--------------------*/
+.movie-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+    margin: 0 40px;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+}
+
+.poster-container {
+    flex-shrink: 0;
+}
+
+.poster {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.details-container {
+    flex: 1;
+    padding:25px 25px 0 10px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.title span {
+    font-size: 22px;
+    color: #777;
+}
+
+.rating {
+    font-size: 20px;
+    color: #f39c12;
+    margin-bottom: 10px;
+}
+
+.overview {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    white-space: normal;
+    width: 100%;
+}
+
+.genres {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.genre {
+    background-color: #f1c40f;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.production {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.company-logo {
+    height: 50px;
+}
+
+.company-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.website-btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.website-btn:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 1024px) {
+    .movie-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .poster {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .poster {
+        max-width: 100%;
+    }
+}
+
+/*-----end recommendations--------------------*/
+.hr-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+hr {
+    width: 95%;
+    border: none;
+    height: 3px;
+    background: #ddd;
+    border-radius: 20px;
+}
+
+/*-----start recommendations--------------------*/
+.recommendations {
+    margin: 50px 20px 0;
+    text-align: center;
+    padding: 20px;
+}
+
+.recommendations h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.slider-container {
+    position: relative;
+    padding: 0 80px; 
+}
+
+
+.recommendation-item {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px; 
+}
+
+.recommendation-img {
+    width: 220px;
+    height: 330px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.recommendation-img:hover {
+    transform: scale(1.07);
+}
+
+.recommendation-item p{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #FFD700;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 15px;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.swiper-button-prev {
+    left: 0px !important;
+}
+
+.swiper-button-next {
+    right: 0px !important; 
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*-----end recommendations--------------------*/
