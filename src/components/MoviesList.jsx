@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Link} from 'react-router-dom'
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
@@ -30,6 +31,7 @@ const MoviesList = () => {
       <div className="row">
         {movies.slice(0, moviesPerPage).map((movie) => (
           <div key={movie.id} className="col-md-2 mb-4 col-lg-2 col-sm-6">
+            {/* <Link to={`/movie/${movie.id}`} className="recommendation-item"> */}
             <div className="movie-card">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -44,6 +46,7 @@ const MoviesList = () => {
                 <FaHeart className="wishlist-icon" />
               </div>
             </div>
+            {/* </Link> */}
           </div>
         ))}
       </div>
