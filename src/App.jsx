@@ -2,19 +2,19 @@ import './App.css'
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppNavbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import MostViewed from "./components/MostViewed";
-import MoviesList from "./components/MoviesList";
+import Home from './pages/Home'
+import { BrowserRouter, Routes ,Route } from 'react-router-dom';
+
 
 
 function App() {
   return (
-    <div>
-      <AppNavbar />
-      <HeroSection />
-      <MostViewed />
-      <MoviesList />
-    </div>
+            <BrowserRouter>
+              <AppNavbar />
+              <Routes>
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </BrowserRouter>
   );
 }
 

@@ -8,9 +8,6 @@ const MoviesList = () => {
 
   const moviesPerPage = 12;
 
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
-
   useEffect(() => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = import.meta.env.VITE_BASE_URL;
