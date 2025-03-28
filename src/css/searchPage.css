@@ -1,0 +1,30 @@
+.search-page{
+    bottom: 0;
+        position: relative;
+        width: 100%;
+        min-height: calc(100vh - 60px);
+        background: url("../assets/Search hero.jpg") no-repeat center center ;
+        background-size:cover;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding: 50px;
+        color: white;
+        overflow: hidden;
+      }
+.search-container{
+    top:20%;
+    position: absolute;
+}
+.search-container input{
+    position: relative;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    left: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+}

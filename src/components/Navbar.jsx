@@ -5,7 +5,7 @@ import { FaFilm, FaSearch, FaUser , FaHome } from "react-icons/fa";
 const AppNavbar = () => {
   return (
     <Navbar expand="lg" className="custom-navbar">
-      <Container>
+      <Container className="nav-container">
 
         <Navbar.Brand href="#" className="text-danger fw-bold d-flex align-items-center">
           MovieApp
@@ -14,7 +14,7 @@ const AppNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link href="#" className="text-white fw-bold">
+            <Nav.Link href="/" className="text-white fw-bold">
               <FaHome className="me-2" />
               HOME
             </Nav.Link>
@@ -28,7 +28,7 @@ const AppNavbar = () => {
           </Nav>
           
           <Nav>
-            <Nav.Link href="#" className="text-white fw-bold d-flex align-items-center">
+            <Nav.Link href="/search" className="text-white fw-bold d-flex align-items-center">
               <FaSearch className="me-2" />
               SEARCH
             </Nav.Link>
