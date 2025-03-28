@@ -5,6 +5,7 @@ import AppNavbar from "./components/Navbar";
 import Home from './pages/Home'
 import { BrowserRouter, Routes ,Route } from 'react-router-dom';
 import MovieDetails from './pages/MovieDetails'
+import SearchPage from './pages/SearchPage'
 
 
 
@@ -15,9 +16,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/movie/:id" element={<MovieDetails />} />
+                <Route path="/search" element={<SearchPage />} />
               </Routes>
             </BrowserRouter>
   );
 }
-
 export default App
