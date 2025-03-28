@@ -36,7 +36,7 @@ const MovieCard = ({ movie }) => {
               className="bi bi-heart-fill"
               style={{
                 fontSize: "1.5rem",
-                color: isInwatchlist ? "#FF6347" : "white",
+                color: isInwatchlist ? "orange" : "white",
               }}
             ></i>
           </button>

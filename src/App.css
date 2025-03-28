@@ -115,7 +115,7 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   background: url("./assets/hero-bg.jpg") no-repeat center center/cover;
   display: flex;
   align-items: center;
@@ -157,18 +157,17 @@ body {
 .btn {
   padding: 10px 20px;
   border: none;
-  font-weight: bold;
   cursor: pointer;
   border-radius: 20px;
   margin-right: 10px;
 }
-.source-btn {
+.source-btn,.read-more-btn {
   background-color: #b30000;
   color: white;
 }
-.read-more-btn {
-  background-color: #d40000;
-  color: white;
+.source-btn:hover,.read-more-btn:hover {
+  background-color: #8c0000;
+  box-shadow: 0px 4px 8px rgba(246, 245, 245, 0.2); 
 }
 
 
@@ -195,7 +194,7 @@ body {
 }
 
 .movie-poster:hover {
-  transform: scale(1.05);
+  transform: scale(.95);
 }
 
 
@@ -216,42 +215,91 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  height: 320px;
-  background: linear-gradient(to bottom right, #b30000, #800000); 
+  height: 350px;
+  background: linear-gradient(to bottom right, #5d5a5a, #8a0808); 
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px #ecbdbd4d;
 }
 .movie-image {
   width: 100%;
   height: 75%; 
-  object-fit: cover;
+  object-fit: fill;
 }
 .movie-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 12px;
   color: black;
 }
 .movie-title {
   display: block;
   text-align: left;
   font-size: 14px;
-  font-weight: bold;
+  font-weight:bold;
+  color: black;
 }
 .movie-date {
-  font-size: 12px;
+  font-size: 10px;
   display: block;
+  color: black;
+
 }
 .wishlist-icon {
   color: white;
   cursor: pointer;
   font-size: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+/* Pagination */
 .pagination-container {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  gap: 8px;
   margin-top: 20px;
 }
+.pagination-container button {
+  background-color: #b30000; 
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px; 
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); 
+}
+.pagination-container button:hover {
+  background-color: #8c0000; 
+  transform: scale(1.1); 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.pagination-container button:disabled {
+  background-color: #908f8f;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.pagination-container .btn-outline-danger {
+  background-color: #ffffff;
+  color: #b30000;
+}
+.pagination-container .btn-outline-danger:hover {
+  background-color: #b30000;
+  color: white;
+}
+
 

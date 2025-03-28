@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useTranslation } from "react-i18next";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
+
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
   
 
   const moviesPerPage = 12;
@@ -26,7 +25,7 @@ const MoviesList = () => {
   return (
     <div className="movies-container">
       <h1 className="section-title" style={{ color: "#d10000" }}>
-        {t("movies lsit")}
+        Movies List
       </h1>
       <div className="row">
         {movies.slice(0, moviesPerPage).map((movie) => (

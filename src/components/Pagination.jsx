@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
   return (
@@ -8,7 +9,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
       >
-        &laquo;
+        <FaAngleLeft />
       </button>
 
       {[...Array(totalPages)].map((_, i) => (
@@ -28,7 +29,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
         onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
         disabled={currentPage === totalPages}
       >
-        &raquo;
+        <FaAngleRight />
       </button>
     </div>
   );

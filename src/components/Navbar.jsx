@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+
 import LoginModal from "./Login";
 
 const AppNavbar = () => {
@@ -38,7 +39,7 @@ const AppNavbar = () => {
   return (
     <Navbar expand="lg" className="custom-navbar" style={{ backgroundColor: "#001F3F" }}>
       <Container> 
-        <Navbar.Brand as={Link} to="/" className="text-danger fw-bold d-flex align-items-center">
+        <Navbar.Brand as={Link} to="/" className="fw-bold d-flex align-items-center" style={{ color: "#d10000" }}>
           {t("app")}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -83,14 +84,14 @@ const AppNavbar = () => {
           <Nav className="d-flex align-items-center">
             {user ? (
               <div className="d-flex align-items-center">
-                <span className="welcome-message">Welcome, {user.name}</span>
+                <span className="welcome-message"><FaUser className="me-2" /> {user.name}</span>
                 <button onClick={handleLogout} className="auth-btn">
-                  <FaSignOutAlt className="me-2" /> LOG-OUT
+                  <FaSignOutAlt className="me-2" />
                 </button>
               </div>
             ) : (
               <button onClick={() => setShowLogin(true)} className="auth-btn">
-                <FaUser className="me-2" /> LOG-IN
+                <FaUser className="me-2" /> Login
               </button>
             )}
 
