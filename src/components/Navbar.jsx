@@ -6,6 +6,13 @@ import { Link } from "react-router-dom";
 
 const AppNavbar = () => {
   const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
+  
+  const scrollToMovies = () => {
+    const moviesSection = document.getElementById("movies-section");
+    if (moviesSection) {
+      moviesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <Navbar expand="lg" className="custom-navbar" style={{ backgroundColor: "#001F3F" }}>
@@ -26,7 +33,7 @@ const AppNavbar = () => {
             <Nav.Link as={Link} to="/" className="text-white fw-bold d-flex align-items-center">
               <FaHome className="me-2" /> HOME
             </Nav.Link>
-            <Nav.Link as={Link} to="/" className="text-white fw-bold d-flex align-items-center">
+            <Nav.Link onClick={scrollToMovies} className="text-white fw-bold d-flex align-items-center" style={{ cursor: "pointer" }}>
               <FaFilm className="me-2" /> MOVIES
             </Nav.Link>
             <Nav.Link as={Link} to="/watchlist" className="text-white fw-bold d-flex align-items-center position-relative">
