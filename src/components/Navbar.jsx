@@ -1,11 +1,25 @@
-import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { FaFilm, FaSearch, FaUser, FaHome, FaHeart } from "react-icons/fa";
+import React, { useState } from "react";
+import { Container, Nav, Navbar ,Button } from "react-bootstrap";
+import { FaFilm, FaSearch, FaUser, FaHome, FaHeart ,FaSignOutAlt} from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import LoginModal from "./Login";
+
 const AppNavbar = () => {
   const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
+
+  // State for Login Modal
+  const [user, setUser] = useState(null);
+    const [showLogin, setShowLogin] = useState(false);
+
+    const handleLogin = (username) => {
+        setUser({ name: username }); 
+    };
+
+    const handleLogout = () => {
+        setUser(null); 
+    };
 
   return (
     <Navbar expand="lg" className="custom-navbar" style={{ backgroundColor: "#001F3F" }}>
@@ -44,13 +58,28 @@ const AppNavbar = () => {
             <Nav.Link as={Link} to="/search" className="text-white fw-bold d-flex align-items-center">
               <FaSearch className="me-2" /> SEARCH
             </Nav.Link>
-            <Nav.Link as={Link} to="" className="login-btn text-white fw-bold d-flex align-items-center">
-              <FaUser className="me-2" /> LOG-IN
-            </Nav.Link>
-          </Nav>
 
+            {user ? (
+              <div className="d-flex align-items-center">
+                <span className="welcome-message">Welcome, {user.name}</span>
+                <button onClick={handleLogout} className="auth-btn">
+                  <FaSignOutAlt className="me-2" /> LOG-OUT
+                </button>
+              </div>
+            ) : (
+              <button onClick={() => setShowLogin(true)} className="auth-btn">
+                <FaUser className="me-2" /> LOG-IN
+              </button>
+            )}
+
+            {/* <Nav.Link as={Link} to="" className="login-btn text-white fw-bold d-flex align-items-center">
+              <FaUser className="me-2" /> LOG-IN
+            </Nav.Link> */}
+          </Nav>
+            
         </Navbar.Collapse>
       </Container>
+      <LoginModal show={showLogin} handleClose={() => setShowLogin(false)} onLogin={handleLogin} />
     </Navbar>
   );
 };
