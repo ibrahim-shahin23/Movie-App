@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Link } from 'react-router-dom';
 import '../css/searchPage.css'
+import { t } from 'i18next';
 
 export default function SearchPage() {
   
@@ -30,7 +31,7 @@ export default function SearchPage() {
     <div className='search-page'>
     <div className='search-container container '> 
     <div className='form mb-5'>
-      <input className='form-control mx-5' onChange={handleInput} type="text" placeholder="search your movies here" name="search-movie" id="search-movie" value={movieName} />
+      <input className='form-control mx-5' onChange={handleInput} type="text" placeholder={t("search")} name="search-movie" id="search-movie" value={movieName} />
     </div>
       <Swiper
         slidesPerView={5}  

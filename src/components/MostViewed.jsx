@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
+
 
 const MostViewed = () => {
   const [movies, setMovies] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -20,7 +23,7 @@ const MostViewed = () => {
   return (
     <div className="most-viewed py-5 ">
       <h1 className="section-title" style={{ color: "#d10000" }}>
-        Most Viewed
+        {t("MostViewed")}
       </h1>
       <Carousel indicators={false} interval={null}>
         {movies.map((movie, index) => {

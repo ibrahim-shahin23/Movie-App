@@ -5,12 +5,16 @@ import {Link} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { addTowatchlist, removeFromwatchlist } from "../store/slices/watchlist";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useTranslation } from "react-i18next";
+
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
   const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  const { t } = useTranslation();
+  
 
   const moviesPerPage = 12;
 
@@ -30,7 +34,7 @@ const MoviesList = () => {
 
   return (
     <div className="movies-container">
-      <h1 className="section-title" style={{ color: "#d10000" }}>Movies List</h1>
+      <h1 className="section-title" style={{ color: "#d10000" }}>{t("movieslist")}</h1>
       <div className="row">
         {movies.slice(0, moviesPerPage).map((movie) => {
           const isInwatchlist = watchlistItems.some((item) => item.id === movie.id);
@@ -47,7 +51,6 @@ const MoviesList = () => {
                     <span className="movie-title">{movie.title}</span>
                     <span className="movie-date">{movie.release_date}</span>
                   </div>
-                  {/* زر القلب في أقصى اليمين السفلي */}
                   <button
                     className="btn position-absolute bottom-0 end-0 me-2 mb-2"
                     onClick={() => {

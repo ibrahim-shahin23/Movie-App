@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import img from '../assets/react.svg';
+import { t } from 'i18next';
+
 
 const MovieReviews = ({ movieId }) => {
     const [reviews, setReviews] = useState([]);
@@ -22,7 +24,7 @@ const MovieReviews = ({ movieId }) => {
 
     return (
         <div className="reviews-section">
-    <h2>Reviews</h2>
+    <h2>{t("Reviews")}</h2>
     <ul>
         {reviews.map((review) => (
             <li key={review.id} className="review">
