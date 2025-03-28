@@ -8,6 +8,7 @@ import store from './store';
 import './index.css'
 import "./App.css"
 import { Provider } from 'react-redux';
+import "./i18n";
 import App from './App.jsx'
 
 
