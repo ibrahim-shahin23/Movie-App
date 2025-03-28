@@ -25,13 +25,22 @@ const Recommendations = ({ movieId }) => {
 
   return (
     <div className="recommendations">
-      <h2>Recommended Movies</h2>
+      <h2>Recommendations</h2>
       <Swiper
         slidesPerView={6}  
         spaceBetween={5}  
         navigation={true} 
         modules={[Navigation]}
         className="movie-slider"
+        breakpoints={{
+          0: { slidesPerView: 1, spaceBetween: 10 },
+          480: { slidesPerView: 1, spaceBetween: 10 },
+          768: { slidesPerView: 2, spaceBetween: 10 },
+          992: { slidesPerView: 3, spaceBetween: 10 },
+          1200: { slidesPerView: 4, spaceBetween: 10 },
+          1400: { slidesPerView: 5, spaceBetween: 10 },
+          1650: { slidesPerView: 6, spaceBetween: 10 },
+        }}
       >
         {recommendations.map((movie) => (
           <SwiperSlide key={movie.id}>

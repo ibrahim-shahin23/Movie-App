@@ -7,11 +7,11 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 30px;
-    padding: 20px;
+    padding: 50px;
     width: 100%;
-    margin: 0 40px;
-    background-color: #fff;
-    color: #333;
+    margin: 0;
+    background: linear-gradient(to right, black, #2b0101);
+    color: #fff;
     position: relative;
 }
 
@@ -20,9 +20,9 @@ body {
 }
 
 .poster {
-    width: 100%;
-    max-width: 450px;
+    width: 50vh;
     border-radius: 10px;
+    height: 70vh;
 }
 
 .details-container {
@@ -36,16 +36,24 @@ body {
     margin-bottom: 5px;
 }
 
-.title span {
-    font-size: 22px;
-    color: #777;
+.date{
+    font-size: 14px;
+    color: #dbdbdb;
 }
 
 .rating {
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
     color: #f39c12;
-    margin-bottom: 10px;
-}
+    margin: 20px 0 30px;
+  }
+  
+  .star-icon {
+    color: #f39c12;
+    font-size: 22px;
+  }
 
 .overview {
     font-size: 18px;
@@ -54,21 +62,32 @@ body {
     word-wrap: break-word; 
     overflow-wrap: break-word;
     white-space: normal;
-    width: 100%;
+    width: 85%;
+    color: #dbdbdb;
+
 }
 
 .genres {
     display: flex;
     gap: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .genre {
-    background-color: #f1c40f;
+    background-color: #f1310f;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 16px;
     font-weight: bold;
+}
+
+.movie-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width:fit-content;
+    flex-wrap: wrap;
+    color: #dbdbdb;
 }
 
 .production {
@@ -76,8 +95,11 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    padding: 10px 15px;
+    border-radius: 8px;
+    max-width: fit-content; 
 }
-
 .company-logo {
     height: 50px;
 }
@@ -85,22 +107,26 @@ body {
 .company-name {
     font-size: 18px;
     font-weight: bold;
-    color: #555;
+    color: #dbdbdb;
 }
 
 .website-btn {
     display: inline-block;
-    background-color: #3498db;
+    background: linear-gradient(135deg, #8B0000, #B22222);
     color: white;
     padding: 12px 18px;
     border-radius: 20px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .website-btn:hover {
-    background-color: #2980b9;
+    background: linear-gradient(to right, black, #800000);
+    transform: scale(1.05);
+    color: white;
+
 }
 
 @media (max-width: 1024px) {
@@ -117,35 +143,52 @@ body {
     .poster {
         max-width: 100%;
     }
+    .details-container {
+        padding-left: 15px;
+        padding-right: 15px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center;
+        text-align: center; /
+    }
 }
 
-/*-----end recommendations--------------------*/
+/*-----end --------------------*/
 .hr-container {
     display: flex;
     justify-content: center;
-    margin: 30px 0;
+    margin:0;
+    background: linear-gradient(to right, black, #2b0101);
 }
 
 hr {
     width: 95%;
     border: none;
+    margin: 0;
     height: 3px;
     background: #ddd;
     border-radius: 20px;
+    background: linear-gradient(to right, rgb(128, 0, 0), #2b0101);
+
 }
 
 /*-----start recommendations--------------------*/
 .recommendations {
-    margin: 50px 20px 0;
+    margin:0;
     text-align: center;
-    padding: 20px;
+    padding: 40px 80px;
+    background: linear-gradient(to right, black, #2b0101);
+
 }
 
 .recommendations h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 40px;
     text-align: left;
-    padding-left: 20px;
+    color: #fff;
+
 }
 
 .slider-container {
@@ -153,11 +196,24 @@ hr {
     padding: 0 80px; 
 }
 
+.movie-slider{
+    padding: 0 50px;
+
+}
+@media (max-width: 480px) {
+    .movie-slider {
+        padding: 0 20px;
+    }
+    .recommendations {
+        padding: 40px 0;    
+    }
+    
+}
 
 .recommendation-item {
     text-align: center;
     text-decoration: none;
-    color: black;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,11 +235,15 @@ hr {
     font-size: 16px;
     font-weight: bold;
     margin-top: 12px;
+    transition: 0.3s ease;
+}
+.recommendation-item:hover p {
+    color: #800000;
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #FFD700;
+    color: #800000;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
     padding: 15px;
@@ -208,3 +268,110 @@ hr {
 }
 
 /*-----end recommendations--------------------*/
+
+/*-----start reviews--------------------*/
+
+.reviews-section {
+    width: 100%;
+    margin: 0;
+    padding:40px 80px;
+    background: linear-gradient(to right, black, #2b0101);
+    text-align: left;
+}
+
+.reviews-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    display: inline-block;
+    padding:20px 7px;
+}
+
+.no-review {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ddd;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to right, black, #2b0101);
+}
+
+.review {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    background: #300000; 
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: white;
+}
+
+.review:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.review-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #312202;
+}
+
+.review-content {
+    flex: 1;
+}
+
+.review-author {
+    font-size: 18px;
+    font-weight: bold;
+    color: #9b601d; 
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #dbdbdb; 
+}
+
+.read-more {
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+    color: #ffcc00;
+}
+
+@media (max-width: 768px) {
+    .reviews-section {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .review {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .review-avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .review-content {
+        text-align: center;
+    }
+}

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import StarRating from "../components/Rating";
 import Recommendations from "../components/Recommendations";
+import MovieReviews from "../components/Reviews";
 import "../css/MovieDetails.css";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -17,7 +19,7 @@ function MovieDetails() {
       .then((response) => setMovie(response.data))
       .catch((error) => console.error("Error fetching movie details:", error));
   }, [id]);
-  console.log(movie);
+  // console.log(movie);
 
   if (!movie) return <p>Loading...</p>;
 
@@ -33,8 +35,11 @@ function MovieDetails() {
         </div>
 
         <div className="details-container">
-          <h1 className="title">{movie.title} <span>({new Date(movie.release_date).getFullYear()})</span></h1>
-          <p className="rating">{movie.vote_average.toFixed(1)} / 10</p>
+          <h1 className="title">{movie.title}</h1>
+          <span className="date">{new Date(movie.release_date).toLocaleDateString('en-US',
+             { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+          {/* <p className="rating">{movie.vote_average.toFixed(1)} / 10</p> */}
+          <StarRating rating={movie.vote_average} />
           <p className="overview">{movie.overview}</p>
 
           <div className="genres">
@@ -43,8 +48,10 @@ function MovieDetails() {
             ))}
           </div>
 
-          <p><strong>Duration:</strong> {movie.runtime} minute</p>
-          <p><strong>language:</strong> {movie.original_language.toUpperCase()}</p>
+            <div className="movie-info">
+              <p><strong>Duration:</strong> {movie.runtime} min</p>
+              <p><strong>Language:</strong> {movie.original_language.toUpperCase()}</p>
+            </div>
 
           <div className="production">
             {movie.production_companies.slice(0, 2).map((company) => (
@@ -73,13 +80,17 @@ function MovieDetails() {
   <div class="hr-container">
     <hr/>
 </div>
+
   <Recommendations movieId={id} />
+  <div class="hr-container">
+    <hr/>
+</div>
+
+  <MovieReviews movieId={movie.id} />
     </>
     
 
   );
 }
-
-
 
 export default MovieDetails;
