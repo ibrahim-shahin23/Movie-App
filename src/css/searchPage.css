@@ -16,15 +16,15 @@
     top:20%;
     position: absolute;
 }
-.search-container input{
+.search-form{
     position: relative;
     transform: translate(-50%, -50%);
     width: 50%;
     left: 50%;
-    padding: 10px;
-    border-radius: 5px;
+    display: flex;
+    border-radius: 50px;
     border: none;
     outline: none;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255);
 }
