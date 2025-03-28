@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
 import { Container, Nav, Navbar, Dropdown } from "react-bootstrap";
 import { FaFilm, FaSearch, FaUser, FaHome, FaHeart, FaGlobe ,FaSignOutAlt} from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import languageContext from './../context/languageContext';
+
 
 import LoginModal from "./Login";
 
 const AppNavbar = () => {
+  const {language,isRTL,changeLang} = useContext(languageContext)
   const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
   const { t, i18n } = useTranslation();
 
@@ -94,12 +97,30 @@ const AppNavbar = () => {
               </button>
             )}
 
-            {/* <Nav.Link as={Link} to="" className="login-btn text-white fw-bold d-flex align-items-center">
-              <FaUser className="me-2" /> LOG-IN
-            </Nav.Link> */}
           </Nav>
-            
+          <li Name="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Languages
+              </a>
+                <ul className="dropdown-menu" style={isRTL?{left:1200}:{left:260 }}>
+                  <li>
+                     <button value={'en'} onClick={(e) => changeLang(e.target.value)} className="dropdown-item">en </button>
+                  </li>
+                  <li>
+                     <button value={'ar'} onClick={(e) => changeLang(e.target.value)} className="dropdown-item" >ar </button>
+                  </li>
+              </ul> 
+              
+            </li>
+
         </Navbar.Collapse>
+        
       </Container>
       <LoginModal show={showLogin} handleClose={() => setShowLogin(false)} onLogin={handleLogin} />
     </Navbar>
