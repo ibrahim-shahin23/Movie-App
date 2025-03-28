@@ -16,6 +16,7 @@
     top:20%;
     position: absolute;
 }
+
 .form{
     display: flex;
     flex-direction: column;
@@ -26,10 +27,10 @@
     width: 50%;
     margin: 0 auto;
     left: 50%;
-    padding: 10px;
-    border-radius: 5px;
+    display: flex;
+    border-radius: 50px;
     border: none;
     outline: none;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255);
 }
