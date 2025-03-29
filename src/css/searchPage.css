@@ -17,14 +17,19 @@
     position: absolute;
 }
 .search-form{
-    position: relative;
-    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255);
     width: 50%;
     left: 50%;
-    display: flex;
-    border-radius: 50px;
+}
+.search-form input{
     border: none;
     outline: none;
+    padding: 0 15px;
     font-size: 16px;
-    background-color: rgba(255, 255, 255);
+    font-weight: light;
 }

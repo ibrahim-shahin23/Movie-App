@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,6 +6,8 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Link } from 'react-router-dom';
 import '../css/searchPage.css'
+import { t } from 'i18next';
+import languageContext from './../context/languageContext';
 
 export default function SearchPage() {
   
@@ -22,23 +24,24 @@ export default function SearchPage() {
   function handleSearch(){
     const searchQuery = document.getElementById('search-movie').value
     setMovieName(searchQuery)
-    console.log(movieName)
-    console.log(searchQuery)
   }
+  const {language,isRTL,changeLang} = useContext(languageContext)
+  console.log(language)
+
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieName}`)
+      .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieName}&language=${language}`)
       .then((response) => setMovies(response.data.results))
       .catch((error) => console.error("Error fetching movies:", error));
-  }, [movieName]);
+  }, [movieName,language]);
 
   return (
     <div className='search-page'>
       <div className='search-container container '> 
         <div className='search-form mb-5'>
           {/* onChange={handleInput}  value={movieName} */}
-          <input className='form-control border rounded-5'  type="text" placeholder="search your movies here" name="search-movie" id="search-movie" />
-          <button className='btn btn-danger m-0  ' onClick={handleSearch}>Search</button>
+          <input className='form-control rounded-5'  type="text" placeholder="search your movies here" name="search-movie" id="search-movie" />
+          <button className='btn btn-danger m-0' onClick={handleSearch}>Search</button>
         </div>
           <Swiper
             slidesPerView={5}  
@@ -46,6 +49,15 @@ export default function SearchPage() {
             navigation={true} 
             modules={[Navigation]}
             className="movie-slider"
+            breakpoints={{
+              0: { slidesPerView: 1, spaceBetween: 10 },
+              480: { slidesPerView: 1, spaceBetween: 10 },
+              768: { slidesPerView: 2, spaceBetween: 10 },
+              992: { slidesPerView: 3, spaceBetween: 10 },
+              1200: { slidesPerView: 4, spaceBetween: 10 },
+              1400: { slidesPerView: 5, spaceBetween: 10 },
+              1650: { slidesPerView: 6, spaceBetween: 10 },
+            }}    
           >
           {movies.map((movie) => (
               <SwiperSlide key={movie.id}>

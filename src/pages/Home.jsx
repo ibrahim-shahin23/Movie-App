@@ -6,9 +6,11 @@ import MoviesList from "../components/MoviesList";
 export default function Home() {
   return (
     <div>
-        <HeroSection />
-        <MostViewed />
+      <HeroSection />
+      <MostViewed />
+      <div id="movies-section">
         <MoviesList />
+      </div>
     </div>
-  )
+  );
 }

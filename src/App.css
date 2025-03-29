@@ -1,16 +1,9 @@
 body {
-  /* background: linear-gradient(to bottom right, #b30000, #800000); */
-  background-color: black;
+  background: linear-gradient(to right, black, #2b0101);
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
-
-
-
-
-
-
 
 /* Handle Danger  */
 :root {
@@ -26,12 +19,6 @@ body {
   background-color: #b30000 !important;
   border-color: #900000 !important;
 }
-
-
-
-
-
-
 
 /* Section Title  */
 .section-title {
@@ -50,6 +37,7 @@ body {
   width: fit-content;
   letter-spacing: 3px;
 }
+
 .section-title::before,
 .section-title::after {
   content: "";

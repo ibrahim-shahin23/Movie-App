@@ -7,7 +7,7 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 30px;
-    padding: 50px;
+    padding: 50px 70px;
     width: 100%;
     margin: 0;
     background: linear-gradient(to right, black, #2b0101);
@@ -243,10 +243,10 @@ hr {
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #800000;
-    background-color: rgba(233, 222, 222);
+    color: #ffffff !important;
+    background-color: rgb(19, 19, 19) !important;
     border-radius: 50%;
-    padding: 15px;
+    padding: 25px;
     width: 45px;
     height: 45px;
     position: absolute;
@@ -375,3 +375,78 @@ hr {
         text-align: center;
     }
 }
+
+/*login--------------------------*/
+.custom-modal .modal-header {
+    background-color: #8B0000; 
+    color: white;
+    border-bottom: none;
+}
+
+.custom-modal .modal-body {
+    background-color: #1c1c1c;
+    padding: 20px;
+}
+
+.custom-modal .form-control {
+    background-color: #262626; 
+    color: white;
+    border-radius: 8px;
+    border: 2px solid #8B0000; 
+    padding: 10px;
+}
+
+.custom-modal .form-control:focus {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 5px #ff4d4d;
+}
+
+.custom-modal .form-label {
+    font-weight: bold;
+    color: #ff4d4d; 
+}
+
+.custom-modal .btn-login {
+    background-color: #8B0000; 
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-modal .btn-login:hover {
+    background-color: #660000; 
+}
+
+
+.custom-modal .modal-header .btn-close {
+    filter: invert(1);
+}
+
+.custom-navbar {
+    background-color: #001F3F !important;
+  }
+  
+  .welcome-message {
+    color: white;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 25px;
+    background-color: #8B0000; 
+    font-size: 1rem;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  
+  .auth-btn {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  

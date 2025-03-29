@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import StarRating from "../components/Rating";
 import Recommendations from "../components/Recommendations";
 import MovieReviews from "../components/Reviews";
 import "../css/MovieDetails.css";
+import languageContext from './../context/languageContext';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -13,12 +14,16 @@ function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
 
+  const {language,isRTL,changeLang} = useContext(languageContext)
+  console.log(language)
+
+
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+      .get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=${language}`)
       .then((response) => setMovie(response.data))
       .catch((error) => console.error("Error fetching movie details:", error));
-  }, [id]);
+  }, [id, language]);
   // console.log(movie);
 
   if (!movie) return <p>Loading...</p>;

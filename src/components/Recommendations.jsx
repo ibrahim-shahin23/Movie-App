@@ -1,23 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { t } from 'i18next';
+import languageContext from '../context/languageContext';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+
 const Recommendations = ({ movieId }) => {
+  const {language,isRTL,changeLang} = useContext(languageContext)
+  console.log(language)
   const [recommendations, setRecommendations] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}`)
+      .get(`${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&language=${language}`)
       .then((response) => setRecommendations(response.data.results))
       .catch((error) => console.error("Error fetching recommendations:", error));
-  }, [movieId]);
+  }, [movieId, language]);
 
   if (recommendations.length === 0) {
     return <p>No recommendations available.</p>;
@@ -25,7 +30,7 @@ const Recommendations = ({ movieId }) => {
 
   return (
     <div className="recommendations">
-      <h2>Recommendations</h2>
+      <h2>{t("Recommendations")}</h2>
       <Swiper
         slidesPerView={6}  
         spaceBetween={5}  
