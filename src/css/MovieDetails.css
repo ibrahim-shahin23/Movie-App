@@ -243,10 +243,10 @@ hr {
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #800000;
-    background-color: rgb(19, 19, 19);
+    color: #ffffff !important;
+    background-color: rgb(19, 19, 19) !important;
     border-radius: 50%;
-    padding: 15px;
+    padding: 25px;
     width: 45px;
     height: 45px;
     position: absolute;
