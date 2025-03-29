@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import { BrowserRouter, Routes ,Route } from 'react-router-dom';
 import MovieDetails from './pages/MovieDetails'
 import SearchPage from './pages/SearchPage'
+import NotFound from './pages/NotFound'
 import Watchlist from "./components/watchlist";
 import languageContext from './context/languageContext';
 
@@ -40,6 +41,7 @@ function App() {
                   <Route path="/movie/:id" element={<MovieDetails />} />
                   <Route path="/search" element={<SearchPage />} />
                   <Route path="/watchlist" element={<WatchlistLayout />} />
+                  <Route path="/*" element={<NotFound />} />
                 </Routes>
               </languageContext.Provider>
             </BrowserRouter>
