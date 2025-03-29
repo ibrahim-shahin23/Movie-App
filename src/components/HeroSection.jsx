@@ -1,6 +1,6 @@
 import React from "react";
 import { t } from 'i18next';
-
+import {Link} from "react-router-dom";
 
 
 const HeroSection = () => {
@@ -13,12 +13,16 @@ const HeroSection = () => {
         {t("description")}
         </p>
         <div className="hero-buttons">
+         <Link to={"/search"}>
           <button className="btn btn-outline-danger source-btn">
           {t("startJourney")}
           </button>
+         </Link>
+         <Link to={"/watchlist"}>
           <button className="btn btn-outline-danger read-more-btn">
           {t("watchList")}
           </button>
+         </Link>
         </div>
       </div>
     </div>

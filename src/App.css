@@ -5,12 +5,6 @@ body {
   min-height: 100vh;
 }
 
-
-
-
-
-
-
 /* Handle Danger  */
 :root {
   --bs-danger: #d10000 !important; 
@@ -25,12 +19,6 @@ body {
   background-color: #b30000 !important;
   border-color: #900000 !important;
 }
-
-
-
-
-
-
 
 /* Section Title  */
 .section-title {
@@ -49,6 +37,7 @@ body {
   width: fit-content;
   letter-spacing: 3px;
 }
+
 .section-title::before,
 .section-title::after {
   content: "";
@@ -64,13 +53,6 @@ body {
 .section-title::after {
   right: -170px;
 }
-
-
-
-
-
-
-
 
 
 /* navbar */
@@ -102,13 +84,6 @@ body {
 .login-btn:hover {
   background: darkred;
 }
-
-
-
-
-
-
-
 
 
 /* Hero Section */
