@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useTranslation } from "react-i18next";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
+import languageContext from './../context/languageContext';
 
 const MoviesList = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const { t } = useTranslation();
-  
+  const {language,isRTL,changeLang} = useContext(languageContext)
+  console.log(language)
 
   const moviesPerPage = 12;
   const totalPages = 5;
@@ -17,11 +19,11 @@ const MoviesList = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
     const baseUrl = import.meta.env.VITE_BASE_URL;
 
-    fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&page=${currentPage}`)
+    fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&page=${currentPage}&language=${language}`)
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.error("Error fetching movies:", error));
-  }, [currentPage]);
+  }, [currentPage,language]);
 
   return (
     <div className="movies-container">

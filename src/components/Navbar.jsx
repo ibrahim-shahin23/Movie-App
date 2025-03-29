@@ -52,7 +52,7 @@ const AppNavbar = () => {
             <Nav.Link as={Link} to="/" className="text-white fw-bold d-flex align-items-center">
               <FaHome className="me-2" /> {t("home")}
             </Nav.Link>
-            <Nav.Link onClick={scrollToMovies} className="text-white fw-bold d-flex align-items-center" style={{ cursor: "pointer" }}>
+            <Nav.Link as={Link} to="/" onClick={scrollToMovies} className="text-white fw-bold d-flex align-items-center" style={{ cursor: "pointer" }}>
               <FaFilm className="me-2" /> {t("movies")}
             </Nav.Link>
             <Nav.Link as={Link} to="/watchlist" className="text-white fw-bold d-flex align-items-center position-relative">
@@ -73,12 +73,14 @@ const AppNavbar = () => {
 
             <Dropdown>
               <Dropdown.Toggle variant="light" id="dropdown-language" className="d-flex align-items-center">
-                <FaGlobe className="me-2" /> {t("language")}
+                <FaGlobe className="me-2" /> {language === "en" ? "English" : language === "fr" ? "Français" : language === "ar" ? "العربية" : "中文"}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item onClick={() => changeLanguage("en")}>🇬🇧 English</Dropdown.Item>
-                <Dropdown.Item onClick={() => changeLanguage("es")}>🇪🇸 Español</Dropdown.Item>
+                <Dropdown.Item onClick={() => changeLang("en")}>🇬🇧 English</Dropdown.Item>
+                <Dropdown.Item onClick={() => changeLang("fr")}>🇫🇷 Français</Dropdown.Item>
+                <Dropdown.Item onClick={() => changeLang("ar")}>🇦🇪 العربية</Dropdown.Item>
+                <Dropdown.Item onClick={() => changeLang("zh")}>🇨🇳 中文</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
 
@@ -98,26 +100,6 @@ const AppNavbar = () => {
             )}
 
           </Nav>
-          <li Name="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Languages
-              </a>
-                <ul className="dropdown-menu" style={isRTL?{left:1200}:{left:260 }}>
-                  <li>
-                     <button value={'en'} onClick={(e) => changeLang(e.target.value)} className="dropdown-item">en </button>
-                  </li>
-                  <li>
-                     <button value={'ar'} onClick={(e) => changeLang(e.target.value)} className="dropdown-item" >ar </button>
-                  </li>
-              </ul> 
-              
-            </li>
 
         </Navbar.Collapse>
         

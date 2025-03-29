@@ -16,10 +16,15 @@
     top:20%;
     position: absolute;
 }
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .search-container input{
-    position: relative;
-    transform: translate(-50%, -50%);
     width: 50%;
+    margin: 0 auto;
     left: 50%;
     padding: 10px;
     border-radius: 5px;

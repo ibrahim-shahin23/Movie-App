@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import languageContext from './../context/languageContext';
 
 const MostViewed = () => {
+
+  const {language,isRTL,changeLang} = useContext(languageContext)
+  console.log(language)
+
   const [movies, setMovies] = useState([]);
   const { t } = useTranslation();
 
@@ -12,13 +17,13 @@ const MostViewed = () => {
     const API_KEY = import.meta.env.VITE_API_KEY;
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-    fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
+    fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=${language}`)
       .then((response) => response.json())
       .then((data) => {
         setMovies(data.results.slice(0, 9));
       })
       .catch((error) => console.error("Error fetching movies:", error));
-  }, []);
+  }, [language]);
 
   return (
     <div className="most-viewed py-5">
