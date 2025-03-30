@@ -17,21 +17,13 @@ export default function SearchPage() {
   const [movies,setMovies] = useState([])
   const [movieName,setMovieName] = useState('')
 
-<<<<<<< HEAD
+
   const {language,isRTL,changeLang} = useContext(languageContext)
   console.log(language)
 
   function handleInput(e){
     setMovieName(e.target.value)
-=======
-  // function handleInput(e){
-  //   setMovieName(e.target.value)
-  //   console.log(movieName)
-  // }
-  function handleSearch(){
-    const searchQuery = document.getElementById('search-movie').value
-    setMovieName(searchQuery)
->>>>>>> 1e0468e (searchPage/search form style)
+
     console.log(movieName)
     console.log(searchQuery)
   }
@@ -44,7 +36,6 @@ export default function SearchPage() {
 
   return (
     <div className='search-page'>
-<<<<<<< HEAD
     <div className='search-container container '> 
     <div className='form mb-5'>
       <input className='form-control mx-5' onChange={handleInput} type="text" placeholder={t("search")} name="search-movie" id="search-movie" value={movieName} />
@@ -76,32 +67,7 @@ export default function SearchPage() {
               <p>{movie.title}</p>
             </Link>
           </SwiperSlide>
-=======
-      <div className='search-container container '> 
-        <div className='search-form mb-5'>
-          {/* onChange={handleInput}  value={movieName} */}
-          <input className='form-control border rounded-5'  type="text" placeholder="search your movies here" name="search-movie" id="search-movie" />
-          <button className='btn btn-danger m-0  ' onClick={handleSearch}>Search</button>
-        </div>
-          <Swiper
-            slidesPerView={5}  
-            spaceBetween={1}  
-            navigation={true} 
-            modules={[Navigation]}
-            className="movie-slider"
-          >
-          {movies.map((movie) => (
-              <SwiperSlide key={movie.id}>
-                <Link to={`/movie/${movie.id}`} className="recommendation-item">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                    alt={movie.title}
-                    className="recommendation-img"
-                  />
-                  <p>{movie.title}</p>
-                </Link>
-              </SwiperSlide>
->>>>>>> 1e0468e (searchPage/search form style)
+
 
         ))}
         </Swiper>
