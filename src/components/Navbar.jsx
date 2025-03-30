@@ -30,7 +30,10 @@ const AppNavbar = () => {
     const handleLogout = () => {
         setUser(null); 
     };
-  
+
+    // toggle for navbar
+    const [expanded, setExpanded] = useState(false);
+
   const scrollToMovies = () => {
     const moviesSection = document.getElementById("movies-section");
     if (moviesSection) {
@@ -39,12 +42,15 @@ const AppNavbar = () => {
   };
 
   return (
-    <Navbar expand="lg" className="custom-navbar" style={{ backgroundColor: "#001F3F" }}>
+    <Navbar expand="lg" expanded={expanded} className="custom-navbar" style={{ backgroundColor: "#001F3F" }}>
       <Container> 
         <Navbar.Brand as={Link} to="/" className="text-danger fw-bold d-flex align-items-center">
           {t("app")}
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle 
+          aria-controls="basic-navbar-nav" 
+          onClick={() => setExpanded(!expanded)} 
+        />
 
         <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-between align-items-center">
        
