@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromwatchlist, clearwatchlist } from "../store/slices/watchlist";
 import { useTranslation } from "react-i18next";
+import { FaHeart } from "react-icons/fa";
 
 export default function Watchlist() {
   const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
@@ -24,18 +25,17 @@ export default function Watchlist() {
                   style={{ height: "250px", objectFit: "cover" }}
                 />
                 <div className="card-body p-2 d-flex flex-column">
-                  <h6 className="card-title text-center" style={{ fontSize: "0.9rem" }}>
-                    {movie.title}
-                  </h6>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6 className="card-title" style={{ fontSize: "0.9rem" }}>{movie.title}</h6>
+                    <FaHeart 
+                      className="heart-icon" 
+                      style={{ fontSize: "1.2rem", color: "#FF6347", cursor: "pointer" }}
+                      onClick={() => dispatch(removeFromwatchlist(movie.id))} 
+                    />
+                  </div>
                   <p className="card-text text-center mb-2" style={{ fontSize: "0.8rem" }}>
                     ⭐ {movie.vote_average.toFixed(1)}
                   </p>
-                  <button
-                    className="btn btn-danger btn-sm w-100 mt-auto"
-                    onClick={() => dispatch(removeFromwatchlist(movie.id))}
-                  >
-                    {t("remove")}
-                  </button>
                 </div>
               </div>
             </div>
