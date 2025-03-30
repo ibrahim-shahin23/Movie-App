@@ -1,48 +1,39 @@
-import React, {useEffect, useState, useContext} from 'react'
-import axios from 'axios';
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { Link } from 'react-router-dom';
-import '../css/searchPage.css'
 import { t } from 'i18next';
-import languageContext from './../context/languageContext';
+import languageContext from '../context/languageContext';
 
-export default function SearchPage() {
-  
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
-
-  const [movies,setMovies] = useState([])
-  const [movieName,setMovieName] = useState('')
+const API_KEY = import.meta.env.VITE_API_KEY;
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 
+const Recommendations = ({ movieId }) => {
   const {language,isRTL,changeLang} = useContext(languageContext)
   console.log(language)
+  const [recommendations, setRecommendations] = useState([]);
 
-  function handleInput(e){
-    setMovieName(e.target.value)
-
-    console.log(movieName)
-    console.log(searchQuery)
-  }
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${movieName}&language=${language}`)
-      .then((response) => setMovies(response.data.results))
-      .catch((error) => console.error("Error fetching movies:", error));
-  }, [movieName,language]);
+      .get(`${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}&language=${language}`)
+      .then((response) => setRecommendations(response.data.results))
+      .catch((error) => console.error("Error fetching recommendations:", error));
+  }, [movieId, language]);
+
+  if (recommendations.length === 0) {
+    return <p>No recommendations available.</p>;
+  }
 
   return (
-    <div className='search-page'>
-    <div className='search-container container '> 
-    <div className='form mb-5'>
-      <input className='form-control mx-5' onChange={handleInput} type="text" placeholder={t("search")} name="search-movie" id="search-movie" value={movieName} />
-    </div>
+    <div className="recommendations">
+      <h2>{t("Recommendations")}</h2>
       <Swiper
-        slidesPerView={5}  
-        spaceBetween={1}  
+        slidesPerView={6}  
+        spaceBetween={5}  
         navigation={true} 
         modules={[Navigation]}
         className="movie-slider"
@@ -56,7 +47,7 @@ export default function SearchPage() {
           1650: { slidesPerView: 6, spaceBetween: 10 },
         }}
       >
-      {movies.map((movie) => (
+        {recommendations.map((movie) => (
           <SwiperSlide key={movie.id}>
             <Link to={`/movie/${movie.id}`} className="recommendation-item">
               <img
@@ -67,11 +58,10 @@ export default function SearchPage() {
               <p>{movie.title}</p>
             </Link>
           </SwiperSlide>
-
-
         ))}
-        </Swiper>
-      </div>
+      </Swiper>
     </div>
-  )
-}
+  );
+};
+
+export default Recommendations;
