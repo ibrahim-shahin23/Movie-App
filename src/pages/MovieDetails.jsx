@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addTowatchlist, removeFromwatchlist } from "../store/slices/watchlist";
 import axios from "axios";
+import { FaHeart } from "react-icons/fa";
 import StarRating from "../components/Rating";
 import Recommendations from "../components/Recommendations";
 import MovieReviews from "../components/Reviews";
@@ -13,10 +16,12 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  const { language } = useContext(languageContext);
+  const dispatch = useDispatch();
+  const watchlistItems = useSelector((state) => state.watchlist.watchlistItems);
 
-  const {language,isRTL,changeLang} = useContext(languageContext)
-  console.log(language)
-
+  // التحقق مما إذا كان الفيلم في قائمة المشاهدة
+  const isInWatchlist = watchlistItems.some((item) => item.id === Number(id));
 
   useEffect(() => {
     axios
@@ -24,13 +29,12 @@ function MovieDetails() {
       .then((response) => setMovie(response.data))
       .catch((error) => console.error("Error fetching movie details:", error));
   }, [id, language]);
-  // console.log(movie);
 
   if (!movie) return <p>Loading...</p>;
 
   return (
     <>
-    <div className="movie-container">
+      <div className="movie-container">
         <div className="poster-container">
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -40,10 +44,22 @@ function MovieDetails() {
         </div>
 
         <div className="details-container">
-          <h1 className="title">{movie.title}</h1>
+          {/* اسم الفيلم مع أيقونة القلب */}
+          <div className="d-flex align-items-center justify-content-between">
+            <h1 className="title">{movie.title}</h1>
+            <FaHeart
+              style={{ fontSize: "1.8rem", color: isInWatchlist ? "#d10000" : "white", cursor: "pointer" }}
+              onClick={() =>
+                isInWatchlist
+                  ? dispatch(removeFromwatchlist(movie.id))
+                  : dispatch(addTowatchlist(movie))
+              }
+            />
+          </div>
+
           <span className="date">{new Date(movie.release_date).toLocaleDateString('en-US',
              { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-          {/* <p className="rating">{movie.vote_average.toFixed(1)} / 10</p> */}
+
           <StarRating rating={movie.vote_average} />
           <p className="overview">{movie.overview}</p>
 
@@ -53,10 +69,10 @@ function MovieDetails() {
             ))}
           </div>
 
-            <div className="movie-info">
-              <p><strong>Duration:</strong> {movie.runtime} min</p>
-              <p><strong>Language:</strong> {movie.original_language.toUpperCase()}</p>
-            </div>
+          <div className="movie-info">
+            <p><strong>Duration:</strong> {movie.runtime} min</p>
+            <p><strong>Language:</strong> {movie.original_language.toUpperCase()}</p>
+          </div>
 
           <div className="production">
             {movie.production_companies.slice(0, 2).map((company) => (
@@ -73,28 +89,25 @@ function MovieDetails() {
             ))}
           </div>
 
-        
           {movie.homepage && (
             <a href={movie.homepage} className="website-btn" target="_blank" rel="noopener noreferrer">
               Website
             </a>
           )}
-       </div>
-    
-  </div>
-  <div class="hr-container">
-    <hr/>
-</div>
+        </div>
+      </div>
 
-  <Recommendations movieId={id} />
-  <div class="hr-container">
-    <hr/>
-</div>
+      <div className="hr-container">
+        <hr />
+      </div>
 
-  <MovieReviews movieId={movie.id} />
+      <Recommendations movieId={id} />
+      <div className="hr-container">
+        <hr />
+      </div>
+
+      <MovieReviews movieId={movie.id} />
     </>
-    
-
   );
 }
 

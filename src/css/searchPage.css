@@ -16,20 +16,21 @@
     top:20%;
     position: absolute;
 }
-.search-form{
+
+.form{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin: 0 auto;
     justify-content: center;
-    border-radius: 50px;
-    background-color: rgba(255, 255, 255);
-    width: 50%;
-    left: 50%;
 }
-.search-form input{
+.search-container input{
+    width: 50%;
+    margin: 0 auto;
+    left: 50%;
+    padding: 10px;
+    border-radius: 5px;
     border: none;
     outline: none;
-    padding: 0 15px;
     font-size: 16px;
-    font-weight: light;
+    background-color: rgba(255, 255, 255, 0.8);
 }
