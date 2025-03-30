@@ -6,7 +6,6 @@ const resources = {
     translation: {
       app:"MovieApp",
       home: "HOME",
-      app:"MovieApp",
       movies: "MOVIES",
       watchlist: "WATCHLIST",
       search: "SEARCH",
@@ -23,7 +22,7 @@ const resources = {
       "clear":"Clear",
       "movieslist":"Movies List",
       "MostViewed":"Most Viewed",
-      "search":"search your movies here" ,
+      "search_placeholder": "search your movies here",
       "Recommendations":"Recommendations",
       "Reviews":"Reviews",
 
@@ -49,7 +48,7 @@ const resources = {
       "clear":"claro",
       "movieslist":"Lista de Películas",
       "MostViewed":"Más vistos",
-      "search":"busca tus películas",
+      "search_placeholder": "busca tus películas",
       "Recommendations":"Recomendaciones",
       "Reviews":"Reseñas",
 
